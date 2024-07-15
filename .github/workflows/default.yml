@@ -1,0 +1,39 @@
+name: Reproduce Issue and Verify Workaround
+
+on:
+  workflow_dispatch:
+
+jobs:
+  default:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - name: Install dependencies
+        run: |
+          npm install --global @salesforce/cli
+          sf --version
+          sf plugins --core
+      - name: Authenticate DevHub
+        run: echo "${{ secrets.SFDX_AUTH_URL_DEVHUB }}" | sf org login sfdx-url --set-default-dev-hub --sfdx-url-stdin
+      - name: Create a Scratch Org
+        run: |
+          sf org create scratch -f config/project-scratch-def.json --alias deploy-deleted-flow --set-default
+          sf project deploy start
+          # simulate a change to the Flow to create another version of the Flow
+          sed -i -e "s/Set Description/Set Description2/" force-app/main/default/flows/Set_Account_Description.flow-meta.xml
+          sf project deploy start
+      - name: Reproduce Issue
+        run: |
+          if sf project deploy start --metadata-dir mdapi/delete-flow; then
+            echo "expected to fail but didn't"
+            exit 1
+          fi
+      - name: Verify Workaround
+        run: ./workaround.sh
+      - name: Delete scratch org
+        if: always()
+        run: |
+          sf org delete scratch --no-prompt

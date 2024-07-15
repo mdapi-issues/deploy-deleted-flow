@@ -1,0 +1,4 @@
+/.sfdx/
+/.sf/
+# generated
+/mdapi/deactivate-and-delete-flow-versions/destructiveChangesPost.xml
