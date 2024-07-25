@@ -44,3 +44,25 @@ Delete inactive Flow Versions using `destructiveChangesPost.xml`:
     <version>61.0</version>
 </Package>
 ```
+
+## References
+
+Bug reports and forums
+
+- [Known Issue: Deletion of flow metadata through destructive changes not supported](https://issues.salesforce.com/issue/a028c00000gAwixAAC/deletion-of-flow-metadata-through-destructive-changes-not-supported)
+- [StackExchange: Insufficient access rights on cross-reference id when reverting a flow in CI/CD pipeline](https://salesforce.stackexchange.com/questions/298592/insufficient-access-rights-on-cross-reference-id-when-reverting-a-flow-in-ci-cd)
+
+Open Source Tools
+
+- [sfdx leboff:flows:deactivate](https://www.npmjs.com/package/sfdx-leboff#sfdx-leboffflowsdeactivate--n-string--p-string--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+- [sfdx leboff:flows:delete](https://www.npmjs.com/package/sfdx-leboff#sfdx-leboffflowsdelete--n-string--p-string--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+- [sf hardis:org:purge:flow](https://sfdx-hardis.cloudity.com/hardis/org/purge/flow/)
+- [sf ziemniakoss:flows:deactivate](https://www.npmjs.com/package/@ziemniakoss/sf-flow-management-plugin)
+- [sf ziemniakoss:flows:purge](https://www.npmjs.com/package/@ziemniakoss/sf-flow-management-plugin)
+- [sfdx-git-delta PR to apply workaround for Flow deletions](https://github.com/scolladon/sfdx-git-delta/pull/893)
+- [sfdx-git-delta PR to warn about Flow deletions](https://github.com/scolladon/sfdx-git-delta/pull/894)
+
+Vendors
+
+- [Gearset: Flow Definitions can't be deleted"](https://docs.gearset.com/en/articles/2506780-flow-definitions-can-t-be-deleted)
+- [Copado: Destructive Changes in Copado Doesn't Support Flow and Process Builder](https://docs.copado.com/articles/#!copado-ci-cd-publication/destructive-changes-in-copado-doesn-t-support-flow-and-process-builder/a/h3_411261369)
