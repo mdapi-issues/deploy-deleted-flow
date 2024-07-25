@@ -12,7 +12,19 @@
 
 ## Issue
 
-Error Message:
+When trying to delete a Flow with a `destructiveChanges.xml` or `destructiveChangesPost.xml` like this:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Set_Account_Description</members>
+        <name>Flow</name>
+    </types>
+</Package>
+```
+
+You'll get this error message:
 
 > insufficient access rights on cross-reference id
 
@@ -41,7 +53,6 @@ Delete inactive Flow Versions using `destructiveChangesPost.xml`:
         <members>Set_Account_Description-2</members>
         <name>Flow</name>
     </types>
-    <version>61.0</version>
 </Package>
 ```
 
